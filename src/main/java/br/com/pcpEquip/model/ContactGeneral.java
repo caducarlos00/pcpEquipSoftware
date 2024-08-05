@@ -10,15 +10,17 @@ import java.math.BigDecimal;
 @Table(name = "CONTACT_GENERAL")
 public class ContactGeneral {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
+    @Column(name = "FEDERAL_REGISTRATION")
     private String federalRegistration;
     private String phone;
     private String email;
+    @Column(name = "IS_SUPPLIER")
     private Boolean isSupplier;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -27,7 +29,6 @@ public class ContactGeneral {
         this.id = id;
     }
 
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -36,7 +37,6 @@ public class ContactGeneral {
         this.name = name;
     }
 
-    @Column(name = "FEDERAL_REGISTRATION")
     public String getFederalRegistration() {
         return federalRegistration;
     }
@@ -45,7 +45,6 @@ public class ContactGeneral {
         this.federalRegistration = federalRegistration;
     }
 
-    @Column(name = "PHONE")
     public String getPhone() {
         return phone;
     }
@@ -54,7 +53,6 @@ public class ContactGeneral {
         this.phone = phone;
     }
 
-    @Column(name = "EMAIL")
     public String getEmail() {
         return email;
     }
@@ -63,7 +61,6 @@ public class ContactGeneral {
         this.email = email;
     }
 
-    @Column(name = "IS_SUPPLIER")
     public Boolean getIsSupplier() {
         return isSupplier;
     }

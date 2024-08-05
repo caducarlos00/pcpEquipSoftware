@@ -1,6 +1,6 @@
 package br.com.pcpEquip;
 
-import br.com.pcpEquip.core.ProductRepository;
+import br.com.pcpEquip.repository.ProductRepository;
 import br.com.pcpEquip.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

@@ -11,6 +11,8 @@ import java.util.Date;
 @Table(name = "PRODUCTS")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String code;
     private String name;
@@ -18,14 +20,18 @@ public class Product {
     private BigDecimal quantity;
     private String brand;
     private String model;
+    @Column(name = "BUY_VALUE")
     private BigDecimal buyValue;
+    @Column(name = "SELL_VALUE")
     private BigDecimal sellValue;
+    @Column(name = "BUY_DATE")
+    @Temporal(TemporalType.DATE)
     private Date buyDate;
     private String NCM;
+    @ManyToOne
+    @JoinColumn(name = "SUPPLIER_CONTACT_FK")
     private ContactGeneral supplier;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -34,7 +40,6 @@ public class Product {
         this.id = id;
     }
 
-    @Column(name = "CODE")
     public String getCode() {
         return code;
     }
@@ -43,7 +48,6 @@ public class Product {
         this.code = code;
     }
 
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -52,7 +56,6 @@ public class Product {
         this.name = name;
     }
 
-    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
@@ -61,7 +64,6 @@ public class Product {
         this.description = description;
     }
 
-    @Column(name = "QUANTITY")
     public BigDecimal getQuantity() {
         return quantity;
     }
@@ -70,7 +72,6 @@ public class Product {
         this.quantity = quantity;
     }
 
-    @Column(name = "BRAND")
     public String getBrand() {
         return brand;
     }
@@ -79,7 +80,6 @@ public class Product {
         this.brand = brand;
     }
 
-    @Column(name = "MODEL")
     public String getModel() {
         return model;
     }
@@ -88,7 +88,6 @@ public class Product {
         this.model = model;
     }
 
-    @Column(name = "BUY_VALUE")
     public BigDecimal getBuyValue() {
         return buyValue;
     }
@@ -97,7 +96,6 @@ public class Product {
         this.buyValue = buyValue;
     }
 
-    @Column(name = "SELL_VALUE")
     public BigDecimal getSellValue() {
         return sellValue;
     }
@@ -106,8 +104,6 @@ public class Product {
         this.sellValue = sellValue;
     }
 
-    @Column(name = "BUY_DATE")
-    @Temporal(TemporalType.DATE)
     public Date getBuyDate() {
         return buyDate;
     }
@@ -116,7 +112,6 @@ public class Product {
         this.buyDate = buyDate;
     }
 
-    @Column(name = "NCM")
     public String getNCM() {
         return NCM;
     }
@@ -125,8 +120,6 @@ public class Product {
         this.NCM = NCM;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "SUPPLIER_CONTACT_FK")
     public ContactGeneral getSupplier() {
         return supplier;
     }
