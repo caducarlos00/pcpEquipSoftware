@@ -13,16 +13,18 @@ classDiagram
         double purchasePrice
         double salePrice
         Date purchaseDate
-        Supplier supplier
+        ContactGeneral supplier
         Category category
     }
 
-    class Supplier {
+    class ContactGeneral {
         Long id
         String name
-        String taxId
+        String federalRegistration
         String phone
         String email
+        String address
+        String type
     }
 
     class Category {
@@ -37,37 +39,28 @@ classDiagram
         String code
         Date entryDate
         Date exitDate
-        Client client
+        ContactGeneral client
         List~Product~ productsUsed
         String serviceDescription
         String status
         double totalPrice
     }
 
-    class Client {
-        Long id
-        String name
-        String taxId
-        String phone
-        String email
-        String address
-    }
-
     class PurchaseOrder {
         Long id
         String code
         Date date
-        Supplier supplier
+        ContactGeneral supplier
         List~Product~ productsPurchased
         int quantity
         double totalPrice
         String status
     }
 
-    Product --> Supplier : supplier
+    Product --> ContactGeneral : supplier
     Product --> Category : category
-    ServiceOrder --> Client : client
+    ServiceOrder --> ContactGeneral : client
     ServiceOrder --> Product : productsUsed
-    PurchaseOrder --> Supplier : supplier
+    PurchaseOrder --> ContactGeneral : supplier
     PurchaseOrder --> Product : productsPurchased
 ```
