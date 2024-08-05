@@ -1,6 +1,7 @@
 ##Diagrama de Classes
 
-```classDiagram
+``` mermaid
+classDiagram
     class Product {
         Long id
         String code
