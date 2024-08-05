@@ -1,67 +1,72 @@
 ##Diagrama de Classes
 
-'''
-classDiagram
-    class Produto {
-        String codigo
-        String nome
-        String descricao
-        int quantidade
-        String marca
-        String modelo
-        double valorCompra
-        double valorVenda
-        Date dataCompra
-        Fornecedor fornecedor
-        Categoria categoria
+```classDiagram
+    class Product {
+        Long id
+        String code
+        String name
+        String description
+        int quantity
+        String brand
+        String model
+        double purchasePrice
+        double salePrice
+        Date purchaseDate
+        Supplier supplier
+        Category category
     }
 
-    class Fornecedor {
-        String nome
-        String cnpjCpf
-        String telefone
+    class Supplier {
+        Long id
+        String name
+        String taxId
+        String phone
         String email
     }
 
-    class Categoria {
-        String codigo
-        String nome
-        String descricao
+    class Category {
+        Long id
+        String code
+        String name
+        String description
     }
 
-    class OrdemDeServico {
-        String codigo
-        Date dataEntrada
-        Date dataSaida
-        Cliente cliente
-        List~Produto~ produtosUtilizados
-        String descricaoServico
+    class ServiceOrder {
+        Long id
+        String code
+        Date entryDate
+        Date exitDate
+        Client client
+        List~Product~ productsUsed
+        String serviceDescription
         String status
-        double valorTotal
+        double totalPrice
     }
 
-    class Cliente {
-        String nome
-        String cnpjCpf
-        String telefone
+    class Client {
+        Long id
+        String name
+        String taxId
+        String phone
         String email
-        String endereco
+        String address
     }
 
-    class OrdemDeCompra {
-        String codigo
-        Date data
-        Fornecedor fornecedor
-        List~Produto~ produtosComprados
-        int quantidade
-        double valorTotal
+    class PurchaseOrder {
+        Long id
+        String code
+        Date date
+        Supplier supplier
+        List~Product~ productsPurchased
+        int quantity
+        double totalPrice
         String status
     }
 
-    Produto --> Fornecedor : fornecedor
-    Produto --> Categoria : categoria
-    OrdemDeServico --> Cliente : cliente
-    OrdemDeServico --> Produto : produtosUtilizados
-    OrdemDeCompra --> Fornecedor : fornecedor
-    OrdemDeCompra --> Produto : produtosComprados
-'''
+    Product --> Supplier : supplier
+    Product --> Category : category
+    ServiceOrder --> Client : client
+    ServiceOrder --> Product : productsUsed
+    PurchaseOrder --> Supplier : supplier
+    PurchaseOrder --> Product : productsPurchased
+```
