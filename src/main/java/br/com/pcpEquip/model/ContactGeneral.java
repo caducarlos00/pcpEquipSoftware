@@ -3,29 +3,27 @@ package br.com.pcpEquip.model;
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-
 @Component
 @Entity
 @Table(name = "CONTACT_GENERAL")
 public class ContactGeneral {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     @Column(name = "FEDERAL_REGISTRATION")
     private String federalRegistration;
     private String phone;
     private String email;
-    @Column(name = "IS_SUPPLIER")
-    private Boolean isSupplier;
+    private String address;
+    private String type; // "Supplier" or "Client"
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    private void setId(Integer id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
@@ -61,11 +59,19 @@ public class ContactGeneral {
         this.email = email;
     }
 
-    public Boolean getIsSupplier() {
-        return isSupplier;
+    public String getAddress() {
+        return address;
     }
 
-    public void setIsSupplier(Boolean isSupplier) {
-        this.isSupplier = isSupplier;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

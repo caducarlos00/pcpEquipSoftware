@@ -8,35 +8,38 @@ import java.util.Date;
 
 @Component
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "PRODUCT")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String code;
     private String name;
     private String description;
-    private BigDecimal quantity;
+    private int quantity;
     private String brand;
     private String model;
-    @Column(name = "BUY_VALUE")
-    private BigDecimal buyValue;
+    @Column(name = "PURCHASE_VALUE")
+    private BigDecimal purchaseValue;
     @Column(name = "SELL_VALUE")
     private BigDecimal sellValue;
-    @Column(name = "BUY_DATE")
+    @Column(name = "PURCHASE_DATE")
     @Temporal(TemporalType.DATE)
-    private Date buyDate;
+    private Date purchaseDate;
     private String NCM;
-    @ManyToOne
-    @JoinColumn(name = "SUPPLIER_CONTACT_FK")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "SUPPLIER_FK")
     private ContactGeneral supplier;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CATEGORY_FK")
+    private Category category;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    private void setId(Integer id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
@@ -64,11 +67,11 @@ public class Product {
         this.description = description;
     }
 
-    public BigDecimal getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(BigDecimal quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -88,12 +91,12 @@ public class Product {
         this.model = model;
     }
 
-    public BigDecimal getBuyValue() {
-        return buyValue;
+    public BigDecimal getPurchaseValue() {
+        return purchaseValue;
     }
 
-    public void setBuyValue(BigDecimal buyValue) {
-        this.buyValue = buyValue;
+    public void setPurchaseValue(BigDecimal purchaseValue) {
+        this.purchaseValue = purchaseValue;
     }
 
     public BigDecimal getSellValue() {
@@ -104,12 +107,12 @@ public class Product {
         this.sellValue = sellValue;
     }
 
-    public Date getBuyDate() {
-        return buyDate;
+    public Date getPurchaseDate() {
+        return purchaseDate;
     }
 
-    public void setBuyDate(Date buyDate) {
-        this.buyDate = buyDate;
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     public String getNCM() {
@@ -126,5 +129,13 @@ public class Product {
 
     public void setSupplier(ContactGeneral supplier) {
         this.supplier = supplier;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
