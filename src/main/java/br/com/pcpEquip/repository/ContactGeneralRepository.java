@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ContactGeneralRepository extends JpaRepository<ContactGeneral, Long> {
 
-    public ContactGeneral findOneByNameContains(String name);
+    ContactGeneral findOneByNameContains(String name);
 }
