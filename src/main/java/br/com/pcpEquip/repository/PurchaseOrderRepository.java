@@ -1,6 +1,6 @@
 package br.com.pcpEquip.repository;
 
-import br.com.pcpEquip.model.PurchaseOrder;
+import br.com.pcpEquip.entity.PurchaseOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

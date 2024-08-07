@@ -1,8 +1,9 @@
 package br.com.pcpEquip.service;
 
-import br.com.pcpEquip.model.Product;
+import br.com.pcpEquip.entity.Product;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProductService {
 
@@ -13,6 +14,8 @@ public interface ProductService {
     Product createProduct(Product product);
 
     Product updateProduct(Long id, Product product);
+
+    Product updateProductPartially(Long id, Map<String, Object> updates);
 
     void deleteProduct(Long id);
 }

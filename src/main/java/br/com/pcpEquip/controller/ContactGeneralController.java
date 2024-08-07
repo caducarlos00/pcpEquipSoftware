@@ -1,6 +1,6 @@
 package br.com.pcpEquip.controller;
 
-import br.com.pcpEquip.model.ContactGeneral;
+import br.com.pcpEquip.entity.ContactGeneral;
 import br.com.pcpEquip.service.ContactGeneralService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +8,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/contactGeneral")
@@ -48,6 +49,12 @@ public class ContactGeneralController {
                 .buildAndExpand(contactGeneralDetails.getId())
                 .toUri();
         return ResponseEntity.created(location).body(contactGeneralDetails);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ContactGeneral> updateContactGeneralPartially(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+        ContactGeneral updatedContact = contactGeneralService.updateContactGeneralPartially(id, updates);
+        return ResponseEntity.ok(updatedContact);
     }
 
     @DeleteMapping("/{id}")

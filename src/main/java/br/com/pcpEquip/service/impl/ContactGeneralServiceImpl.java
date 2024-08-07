@@ -1,11 +1,14 @@
 package br.com.pcpEquip.service.impl;
 
-import br.com.pcpEquip.model.ContactGeneral;
+import br.com.pcpEquip.entity.ContactGeneral;
 import br.com.pcpEquip.repository.ContactGeneralRepository;
 import br.com.pcpEquip.service.ContactGeneralService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 @Service
@@ -45,8 +48,24 @@ public class ContactGeneralServiceImpl implements ContactGeneralService {
     }
 
     @Override
+    public ContactGeneral updateContactGeneralPartially(Long id, Map<String, Object> updates) {
+        ContactGeneral contact = contactGeneralRepository.findById(id)
+                .orElseThrow(NoSuchElementException::new);
+
+        updates.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(ContactGeneral.class, key);
+            if (field != null) {
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, contact, value);
+            }
+        });
+
+        return contactGeneralRepository.save(contact);
+    }
+
+    @Override
     public ContactGeneral findByName(String name) {
-        return contactGeneralRepository.findOneByName(name);
+        return contactGeneralRepository.findOneByNameContains(name);
     }
 
     @Override

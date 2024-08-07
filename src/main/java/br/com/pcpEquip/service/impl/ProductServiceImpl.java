@@ -1,7 +1,6 @@
 package br.com.pcpEquip.service.impl;
 
-import br.com.pcpEquip.model.ContactGeneral;
-import br.com.pcpEquip.model.Product;
+import br.com.pcpEquip.entity.Product;
 import br.com.pcpEquip.repository.ProductRepository;
 import br.com.pcpEquip.service.ContactGeneralService;
 import br.com.pcpEquip.service.ProductService;

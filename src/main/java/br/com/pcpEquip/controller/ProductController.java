@@ -1,6 +1,6 @@
 package br.com.pcpEquip.controller;
 
-import br.com.pcpEquip.model.Product;
+import br.com.pcpEquip.entity.Product;
 import br.com.pcpEquip.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +8,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/products")
@@ -48,6 +49,12 @@ public class ProductController {
                 .buildAndExpand(productDetails.getId())
                 .toUri();
         return ResponseEntity.created(location).body(productDetails);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Product> updateProductPartially(@PathVariable Long id, @RequestBody Map<String, Object> updates){
+        Product updatedProduct = productService.updateProductPartially(id, updates);
+        return ResponseEntity.ok(updatedProduct);
     }
 
     @DeleteMapping("/{id}")
