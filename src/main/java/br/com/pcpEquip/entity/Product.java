@@ -1,4 +1,4 @@
-package br.com.pcpEquip.model;
+package br.com.pcpEquip.entity;
 
 import jakarta.persistence.*;
 import org.springframework.stereotype.Component;

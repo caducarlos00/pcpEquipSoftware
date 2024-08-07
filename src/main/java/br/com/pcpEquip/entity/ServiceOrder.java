@@ -1,4 +1,4 @@
-package br.com.pcpEquip.model;
+package br.com.pcpEquip.entity;
 
 import jakarta.persistence.*;
 
@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "SERVICE_ORDER")
 public class ServiceOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
