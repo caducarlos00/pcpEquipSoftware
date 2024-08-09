@@ -2,6 +2,7 @@ package br.com.pcpEquip.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class PurchaseOrder {
     )
     private List<Product> productsPurchased;
     private int quantity;
-    private double totalPrice;
+    private BigDecimal totalPrice;
     private String status;
 
     public Long getId() {
@@ -77,11 +78,11 @@ public class PurchaseOrder {
         this.quantity = quantity;
     }
 
-    public double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 

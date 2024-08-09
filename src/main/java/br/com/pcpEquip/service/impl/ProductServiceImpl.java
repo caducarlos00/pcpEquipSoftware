@@ -83,7 +83,7 @@ public class ProductServiceImpl implements ProductService {
                             product.setSupplier(supplier);
                         }
                     }
-                }else {
+                } else {
                     ReflectionUtils.setField(field, product, value);
                 }
             }
@@ -93,8 +93,17 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deleteProduct(Long id) {
-        if (productRepository.findById(id).isPresent()) {
+        if (productRepository.existsById(id)) {
             productRepository.deleteById(id);
         }
+    }
+
+    /**
+     * @param name
+     * @return
+     */
+    @Override
+    public Product getProductByName(String name) {
+        return productRepository.findOneByNameContains(name);
     }
 }

@@ -9,6 +9,8 @@ public interface ProductService {
 
     Product getProductById(Long id);
 
+    Product getProductByName(String name);
+
     List<Product> getAllProducts();
 
     Product createProduct(Product product);
