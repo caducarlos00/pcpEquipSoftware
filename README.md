@@ -1,3 +1,13 @@
+##Sistema de controle de Estoque
+
+#Projeto criado para estudo.
+Criando um software para controle de estoque de uma oficina de compressores.
+
+Tecnologias utilizadas:
+Java 21;
+SpringBoot Data JPA;
+SpringBoot WebServices;
+
 ##Diagrama de Classes
 
 ``` mermaid
