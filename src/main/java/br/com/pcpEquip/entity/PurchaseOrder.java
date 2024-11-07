@@ -1,6 +1,10 @@
 package br.com.pcpEquip.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -8,7 +12,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "PURCHASE_ORDER")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PurchaseOrder {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,67 +39,4 @@ public class PurchaseOrder {
     private BigDecimal totalPrice;
     private String status;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public ContactGeneral getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(ContactGeneral supplier) {
-        this.supplier = supplier;
-    }
-
-    public List<Product> getProductsPurchased() {
-        return productsPurchased;
-    }
-
-    public void setProductsPurchased(List<Product> productsPurchased) {
-        this.productsPurchased = productsPurchased;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }

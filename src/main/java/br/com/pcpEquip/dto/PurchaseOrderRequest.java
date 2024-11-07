@@ -1,8 +1,11 @@
 package br.com.pcpEquip.dto;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class PurchaseOrderRequest {
     private String code;
     private Date date;

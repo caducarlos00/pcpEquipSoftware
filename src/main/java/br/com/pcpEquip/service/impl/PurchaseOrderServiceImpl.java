@@ -23,15 +23,12 @@ import java.util.NoSuchElementException;
 @Service
 public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
-    private final PurchaseOrderRepository purchaseOrderRepository;
+    @Autowired
+    private PurchaseOrderRepository purchaseOrderRepository;
     @Autowired
     private ContactGeneralService contactGeneralService;
     @Autowired
     private ProductService productService;
-
-    public PurchaseOrderServiceImpl(PurchaseOrderRepository purchaseOrderRepository) {
-        this.purchaseOrderRepository = purchaseOrderRepository;
-    }
 
     /**
      * @param id

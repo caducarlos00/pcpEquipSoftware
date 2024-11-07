@@ -1,6 +1,10 @@
 package br.com.pcpEquip.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -9,6 +13,10 @@ import java.util.Date;
 @Component
 @Entity
 @Table(name = "PRODUCT")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -35,107 +43,4 @@ public class Product {
     @JoinColumn(name = "CATEGORY_FK")
     private Category category;
 
-    public Long getId() {
-        return id;
-    }
-
-    private void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public BigDecimal getPurchaseValue() {
-        return purchaseValue;
-    }
-
-    public void setPurchaseValue(BigDecimal purchaseValue) {
-        this.purchaseValue = purchaseValue;
-    }
-
-    public BigDecimal getSellValue() {
-        return sellValue;
-    }
-
-    public void setSellValue(BigDecimal sellValue) {
-        this.sellValue = sellValue;
-    }
-
-    public Date getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public void setPurchaseDate(Date purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
-
-    public String getNCM() {
-        return NCM;
-    }
-
-    public void setNCM(String NCM) {
-        this.NCM = NCM;
-    }
-
-    public ContactGeneral getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(ContactGeneral supplier) {
-        this.supplier = supplier;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 }

@@ -1,8 +1,10 @@
 package br.com.pcpEquip.controller;
 
+import br.com.pcpEquip.dto.GeneralResponse;
 import br.com.pcpEquip.dto.PurchaseOrderRequest;
 import br.com.pcpEquip.entity.PurchaseOrder;
 import br.com.pcpEquip.service.PurchaseOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,23 +18,25 @@ import java.util.Map;
 @RequestMapping("/purchaseOrder")
 public class PurchaseOrderController {
 
-    private final PurchaseOrderService purchaseOrderService;
+    @Autowired
+    private PurchaseOrderService purchaseOrderService;
+    @Autowired
+    private GeneralResponse generalResponse;
 
-    public PurchaseOrderController(PurchaseOrderService purchaseOrderService) {
-        this.purchaseOrderService = purchaseOrderService;
-    }
-
+    //Método para Listar as ordens de compra
     @GetMapping
     public List<PurchaseOrder> getAllPurchaseOrder() {
         return purchaseOrderService.getAllPurchaseOrder();
     }
 
+    //Método para listar uma única ordem de compra pelo ID
     @GetMapping("/{id}")
     public ResponseEntity<PurchaseOrder> getPurchaseOrderById(@PathVariable Long id) {
         var purchaseOrder = purchaseOrderService.getPurchaseOrderById(id);
         return ResponseEntity.ok(purchaseOrder);
     }
 
+    //Método para Cadastrar uma nova ordem de compra
     @PostMapping
     public ResponseEntity<PurchaseOrder> createPurchaseOrder(@RequestBody PurchaseOrderRequest request) {
         PurchaseOrder order = purchaseOrderService.createPurchaseOrderRequest(request);
