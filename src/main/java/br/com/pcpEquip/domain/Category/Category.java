@@ -1,4 +1,4 @@
-package br.com.pcpEquip.entity;
+package br.com.pcpEquip.domain.Category;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

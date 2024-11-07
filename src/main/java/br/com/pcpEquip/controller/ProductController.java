@@ -1,6 +1,6 @@
 package br.com.pcpEquip.controller;
 
-import br.com.pcpEquip.entity.Product;
+import br.com.pcpEquip.domain.Product.Product;
 import br.com.pcpEquip.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

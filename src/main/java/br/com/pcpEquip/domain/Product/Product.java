@@ -1,5 +1,7 @@
-package br.com.pcpEquip.entity;
+package br.com.pcpEquip.domain.Product;
 
+import br.com.pcpEquip.domain.Category.Category;
+import br.com.pcpEquip.domain.ContactGeneral.ContactGeneral;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package br.com.pcpEquip.service;
 
-import br.com.pcpEquip.entity.Product;
+import br.com.pcpEquip.domain.Product.Product;
 
 import java.util.List;
 import java.util.Map;

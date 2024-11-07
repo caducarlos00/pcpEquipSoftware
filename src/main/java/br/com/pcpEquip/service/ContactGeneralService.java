@@ -1,6 +1,6 @@
 package br.com.pcpEquip.service;
 
-import br.com.pcpEquip.entity.ContactGeneral;
+import br.com.pcpEquip.domain.ContactGeneral.ContactGeneral;
 
 import java.util.List;
 import java.util.Map;

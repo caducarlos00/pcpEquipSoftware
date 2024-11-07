@@ -1,10 +1,10 @@
 package br.com.pcpEquip.service.impl;
 
-import br.com.pcpEquip.dto.ProductRequest;
-import br.com.pcpEquip.dto.PurchaseOrderRequest;
-import br.com.pcpEquip.entity.ContactGeneral;
-import br.com.pcpEquip.entity.Product;
-import br.com.pcpEquip.entity.PurchaseOrder;
+import br.com.pcpEquip.domain.Product.ProductRequestDTO;
+import br.com.pcpEquip.domain.PurchaseOrder.PurchaseOrderRequestDTO;
+import br.com.pcpEquip.domain.ContactGeneral.ContactGeneral;
+import br.com.pcpEquip.domain.Product.Product;
+import br.com.pcpEquip.domain.PurchaseOrder.PurchaseOrder;
 import br.com.pcpEquip.repository.PurchaseOrderRepository;
 import br.com.pcpEquip.service.ContactGeneralService;
 import br.com.pcpEquip.service.ProductService;
@@ -64,30 +64,30 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
      * @return
      */
     @Override
-    public PurchaseOrder createPurchaseOrderRequest(PurchaseOrderRequest request) {
+    public PurchaseOrder createPurchaseOrderRequest(PurchaseOrderRequestDTO request) {
         PurchaseOrder order = new PurchaseOrder();
-        order.setCode(request.getCode());
-        order.setDate(request.getDate());
-        order.setStatus(request.getStatus());
+        order.setCode(request.code());
+        order.setDate(request.date());
+        order.setStatus(request.status());
 
         // Busca o fornecedor pelo ID
-        ContactGeneral supplier = contactGeneralService.findByName(request.getSupplierName());
+        ContactGeneral supplier = contactGeneralService.findByName(request.supplierName());
         order.setSupplier(supplier);
 
         // Processa os produtos
         List<Product> productsPurchased = new ArrayList<>();
         BigDecimal totalPrice = BigDecimal.ZERO;
 
-        for (ProductRequest productRequest : request.getProducts()) {
+        for (ProductRequestDTO productRequestDTO : request.products()) {
             Product product = null;
-            if (productRequest.getProductId() != null) {
-                product = productService.getProductById(productRequest.getProductId());
-            } else if (productRequest.getProductName() != null) {
-                product = productService.getProductByName(productRequest.getProductName());
+            if (productRequestDTO.getProductId() != null) {
+                product = productService.getProductById(productRequestDTO.getProductId());
+            } else if (productRequestDTO.getProductName() != null) {
+                product = productService.getProductByName(productRequestDTO.getProductName());
             }
             if (product != null) {
                 productsPurchased.add(product);
-                totalPrice.add(product.getSellValue().multiply(BigDecimal.valueOf(productRequest.getQuantity())));
+                totalPrice.add(product.getSellValue().multiply(BigDecimal.valueOf(productRequestDTO.getQuantity())));
             }
         }
 

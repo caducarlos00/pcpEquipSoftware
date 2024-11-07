@@ -1,8 +1,8 @@
 package br.com.pcpEquip.controller;
 
-import br.com.pcpEquip.dto.GeneralResponse;
-import br.com.pcpEquip.dto.PurchaseOrderRequest;
-import br.com.pcpEquip.entity.PurchaseOrder;
+import br.com.pcpEquip.domain.GeneralResponse.GeneralResponseDTO;
+import br.com.pcpEquip.domain.PurchaseOrder.PurchaseOrderRequestDTO;
+import br.com.pcpEquip.domain.PurchaseOrder.PurchaseOrder;
 import br.com.pcpEquip.service.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ public class PurchaseOrderController {
     @Autowired
     private PurchaseOrderService purchaseOrderService;
     @Autowired
-    private GeneralResponse generalResponse;
+    private GeneralResponseDTO generalResponseDTO;
 
     //Método para Listar as ordens de compra
     @GetMapping
@@ -38,7 +38,7 @@ public class PurchaseOrderController {
 
     //Método para Cadastrar uma nova ordem de compra
     @PostMapping
-    public ResponseEntity<PurchaseOrder> createPurchaseOrder(@RequestBody PurchaseOrderRequest request) {
+    public ResponseEntity<PurchaseOrder> createPurchaseOrder(@RequestBody PurchaseOrderRequestDTO request) {
         PurchaseOrder order = purchaseOrderService.createPurchaseOrderRequest(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(order);
     }

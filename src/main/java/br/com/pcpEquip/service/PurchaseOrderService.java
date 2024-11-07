@@ -1,7 +1,7 @@
 package br.com.pcpEquip.service;
 
-import br.com.pcpEquip.dto.PurchaseOrderRequest;
-import br.com.pcpEquip.entity.PurchaseOrder;
+import br.com.pcpEquip.domain.PurchaseOrder.PurchaseOrderRequestDTO;
+import br.com.pcpEquip.domain.PurchaseOrder.PurchaseOrder;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +14,7 @@ public interface PurchaseOrderService {
 
     PurchaseOrder createPurchaseOrder(PurchaseOrder purchaseOrder);
 
-    PurchaseOrder createPurchaseOrderRequest(PurchaseOrderRequest request);
+    PurchaseOrder createPurchaseOrderRequest(PurchaseOrderRequestDTO request);
 
     PurchaseOrder updatePurchaseOrder(Long id, PurchaseOrder purchaseOrder);
 

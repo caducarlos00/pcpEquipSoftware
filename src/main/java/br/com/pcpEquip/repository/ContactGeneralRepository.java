@@ -1,6 +1,6 @@
 package br.com.pcpEquip.repository;
 
-import br.com.pcpEquip.entity.ContactGeneral;
+import br.com.pcpEquip.domain.ContactGeneral.ContactGeneral;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package br.com.pcpEquip.controller;
 
-import br.com.pcpEquip.entity.ContactGeneral;
+import br.com.pcpEquip.domain.ContactGeneral.ContactGeneral;
 import br.com.pcpEquip.service.ContactGeneralService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

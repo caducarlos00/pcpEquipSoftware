@@ -1,6 +1,6 @@
 package br.com.pcpEquip.repository;
 
-import br.com.pcpEquip.entity.Category;
+import br.com.pcpEquip.domain.Category.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
